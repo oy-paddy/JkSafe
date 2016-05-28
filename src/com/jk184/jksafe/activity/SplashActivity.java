@@ -6,17 +6,19 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.app.Activity;
+
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -240,6 +242,14 @@ public class SplashActivity extends BaseActivity {
 						enterHome();
 					}
 				});
+
+		builder.setOnCancelListener(new OnCancelListener() {
+
+			@Override
+			public void onCancel(DialogInterface arg0) {
+				enterHome();
+			}
+		});
 		builder.show();
 	}
 
@@ -283,8 +293,14 @@ public class SplashActivity extends BaseActivity {
 
 						@Override
 						public void onSuccess(ResponseInfo<File> arg0) {
-							showLongToast(SplashActivity.this,
-									getString(R.string.download_success));
+							// 安装apk
+							Intent intent = new Intent(Intent.ACTION_VIEW);
+							intent.addCategory(Intent.CATEGORY_DEFAULT);
+							intent.setDataAndType(Uri.fromFile(arg0.result),
+									"application/vnd.android.package-archive");
+							startActivityForResult(intent, 0);
+							// showLongToast(SplashActivity.this,
+							// getString(R.string.download_success));
 						}
 
 						@Override
@@ -297,4 +313,10 @@ public class SplashActivity extends BaseActivity {
 			showLongToast(SplashActivity.this, getString(R.string.no_sdcard));
 		}
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		enterHome();
+	}
+
 }

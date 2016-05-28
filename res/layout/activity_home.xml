@@ -2,13 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_splash"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#8866ff00"
+        android:gravity="center"
+        android:text="功能列表"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <com.jk184.jksafe.view.FocusedTextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="home" />
+        android:layout_margin="5dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="通过这个项目，可以练习到很多系统的api。好好学习吧，要熟练jk"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <GridView
+        android:id="@+id/gv_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="3"
+        android:verticalSpacing="20dp" >
+    </GridView>
 
 </LinearLayout>
