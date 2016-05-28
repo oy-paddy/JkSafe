@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -95,7 +96,13 @@ public class SplashActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 		findView();
-		checkVersion();
+		SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
+		boolean autoUpdate = sp.getBoolean("auto_update", true);
+		if (autoUpdate) {
+			checkVersion();
+		} else {
+			handler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);
+		}
 
 	}
 

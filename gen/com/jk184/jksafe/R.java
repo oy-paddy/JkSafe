@@ -37,18 +37,23 @@ public final class R {
         public static final int ic_launcher=0x7f02000a;
     }
     public static final class id {
-        public static final int gv_home=0x7f080001;
+        public static final int cb_status=0x7f080009;
+        public static final int gv_home=0x7f080000;
         public static final int iv_item=0x7f080005;
         public static final int pb_loading=0x7f080003;
-        public static final int textView1=0x7f080000;
+        public static final int siv_update=0x7f080001;
+        public static final int tv_desc=0x7f080008;
         public static final int tv_download_progress=0x7f080004;
         public static final int tv_item=0x7f080006;
+        public static final int tv_title=0x7f080007;
         public static final int tv_version=0x7f080002;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
-        public static final int activity_splash=0x7f030001;
-        public static final int item_home=0x7f030002;
+        public static final int activity_setting=0x7f030001;
+        public static final int activity_splash=0x7f030002;
+        public static final int item_home=0x7f030003;
+        public static final int view_setting_item=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
@@ -69,11 +74,19 @@ public final class R {
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
 
+
+
+
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
+
+
+
 
         
 
@@ -92,5 +105,6 @@ public final class R {
         /**  Application theme. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int TitleStyle=0x7f070002;
     }
 }
